@@ -1,0 +1,128 @@
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "registration";
+
+// Create connection
+$db = mysqli_connect('localhost', 'root', '', 'registration');
+// Check connection
+if ($db->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, username, instrument FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>Student Name</th><th>Course</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["id"]."</td><td>".$row["username"]." ".$row["instrument"]."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+
+<!--DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='UTF-8'>
+	
+	<title>Non-Responsive Table</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="schedulestyle.css">
+</head>
+
+<body>
+
+	<div id="page-wrap">
+
+	<h1>Instructor</h1>
+		
+	<table>
+		<tr>
+			<th>Student Name</th>
+			<th>Day</th>
+			<th>Date</th>
+			<th>Course</th>
+			<th>Course 1</th>
+			<th>Course 2</th>
+			<th>Course 3</th>
+			<th>Course 4</th>
+			<th>Course 5</th>
+			<th>Room ID</th>
+		</tr>
+		<tr>
+			<td>James</td>
+			<td>Matman</td>
+			<td>Chief Sandwich Eater</td>
+			<td>Lettuce Green</td>
+			<td><input type="checkbox" name="course1" />&nbsp;</td>
+			<td><input type="checkbox" name="course2" />&nbsp;</td>
+			<td><input type="checkbox" name="course3" />&nbsp;</td>
+			<td><input type="checkbox" name="course4" />&nbsp;</td>
+			<td><input type="checkbox" name="course5" />&nbsp;</td>
+			<td>RBX-12</td>
+		</tr>
+		<tr>
+		  <td>The</td>
+		  <td>Tick</td>
+		  <td>Crimefighter Sorta</td>
+		  <td>Blue</td>
+		  <td><input type="checkbox" name="course1" />&nbsp;</td>
+			<td><input type="checkbox" name="course2" />&nbsp;</td>
+			<td><input type="checkbox" name="course3" />&nbsp;</td>
+			<td><input type="checkbox" name="course4" />&nbsp;</td>
+			<td><input type="checkbox" name="course5" />&nbsp;</td>
+		  <td>Edlund, Ben (July 1996).</td>
+		</tr>
+		<tr>
+		  <td>Jokey</td>
+		  <td>Smurf</td>
+		  <td>Giving Exploding Presents</td>
+		  <td>Smurflow</td>
+		  <td><input type="checkbox" name="course1" />&nbsp;</td>
+			<td><input type="checkbox" name="course2" />&nbsp;</td>
+			<td><input type="checkbox" name="course3" />&nbsp;</td>
+			<td><input type="checkbox" name="course4" />&nbsp;</td>
+			<td><input type="checkbox" name="course5" />&nbsp;</td>
+		  <td>One</td>
+		</tr>
+		<tr>
+		  <td>Cindy</td>
+		  <td>Beyler</td>
+		  <td>Sales Representative</td>
+		  <td>Red</td>
+		  <td>Wars</td>
+		  <td>Lori Quivey</td>
+		  <td>July 5, 1956</td>
+		  <td>Paris</td>
+		  <td>3.4</td>
+		  <td>3451</td>
+		</tr>
+		<tr>
+		  <td>Captain</td>
+		  <td>Cool</td>
+		  <td>Tree Crusher</td>
+		  <td>Blue</td>
+		  <td>Wars</td>
+		  <td>Steve 42nd</td>
+		  <td>December 13, 1982</td>
+		  <td>Las Vegas</td>
+		  <td>1.9</td>
+		  <td>Under the couch</td>
+		</tr>
+	</table>
+	
+	</div>
+		
+</body>
+
+</html>
